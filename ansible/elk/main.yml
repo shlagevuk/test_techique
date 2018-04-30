@@ -1,0 +1,21 @@
+---
+
+- hosts: all
+  become: True
+  tasks:
+    - name: get image for elk
+      docker_image:
+        name: "sebp/elk"
+
+    - name: Restart a container
+      docker_container:
+        name: elk_app
+        image: "sebp/elk"
+        state: started
+        ports:
+         - "5601:5601"
+         - "9200:9200"
+         - "5044:5044"
+
+#TODO install filebeat + template conf
+# TODO automatiser index kibana
