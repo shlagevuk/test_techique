@@ -1,0 +1,11 @@
+[all]
+localhost
+
+[elk]
+localhost
+
+[input]
+localhost
+
+[output]
+localhost

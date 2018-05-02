@@ -1,28 +1,29 @@
 ---
 
-- hosts: input
+- hosts: output
   become: True
   tasks:
     - name: build image for running import
       docker_image:
-        path: ../../python/data_in/
-        name: "input_data"
-      tags: "input_run::build"
+        path: ../../python/data_out/
+        name: "output_data"
+      tags: "output_run::build"
 
     - name: start image
       docker_container:
-        name: "input_runner"
-        image: "input_data"
+        name: "output_runner"
+        image: "output_data"
         state: started
         # TODO  faire un ES dédié et link les data input/output à l'ES dédié.
         network_mode: "host"
-        devices: "{{ home_path }}/data:/data"
-      register: _input_run_runner
-      tags: "input_run::run"
+        ports:
+          - "8080:8080"
+      register: _output_run_runner
+      tags: "output_run::run"
 
     - name: debug
       debug:
-        var: _input_run_runner
+        var: _output_run_runner
         verbosity: 2
 
 #TODO install filebeat + template conf
