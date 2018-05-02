@@ -16,13 +16,21 @@ Reutilisation de elastic et kibana pour le stockage et la visualisation des donn
 
 scripts python pour le feed des données et maj; et serveur web pour les requetes
 
+<<<<<<< HEAD
 ### TODO divers:
+=======
+#h3 TODO divers:
+>>>>>>> 756b8a0c6112e3ddb4bb07d8e95c730bcef65c10
 - installation auto de filebeat + config
 - creation auto des dashboard kibana
 - fix probleme de volume avec docker
 
 
+<<<<<<< HEAD
 ## A destination des front-end:
+=======
+#2 A destination des front-end:
+>>>>>>> 756b8a0c6112e3ddb4bb07d8e95c730bcef65c10
 
 Les requêtes se font simplement via des GET sur le serveur.
 
@@ -30,7 +38,11 @@ Deux variables peuvent être passé dans la requête:
 - index, spécifie l'index sur lequel porte la recherche, par defaut "dealer.csv"
 - id, l'id de l'élement à rechercher, par defaut 1.
 
+<<<<<<< HEAD
 ## A destination des ops:
+=======
+#h2 A destination des ops:
+>>>>>>> 756b8a0c6112e3ddb4bb07d8e95c730bcef65c10
 
 Pour lancer l'application il suffit de run les playbooks dans l'ordre suivant:
 - elk/main.yml qui lance une stack elk officielle dans docker sur les serveurs spécifiés dans le fichier elk/hosts
