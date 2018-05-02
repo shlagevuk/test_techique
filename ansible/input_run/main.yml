@@ -1,0 +1,29 @@
+---
+
+- hosts: all
+  become: True
+  tasks:
+    - name: build image for running import
+      docker_image:
+        path: ../../python/data_in/
+        name: "input_data"
+      tags: "input_run::build"
+
+    - name: start image
+      docker_container:
+        name: input_runner
+        image: input_data
+        state: started
+        # TODO  faire un ES dédié et link les data input/output à l'ES dédié.
+        network_mode: "host"
+        devices: "{{ home_path }}/data:/data"
+      register: _input_run_runner
+      tags: "input_run::run"
+
+    - name: debug
+      debug:
+        var: _input_run_runner
+        verbosity: 2
+
+#TODO install filebeat + template conf
+# TODO automatiser index kibana

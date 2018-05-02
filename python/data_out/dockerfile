@@ -1,0 +1,12 @@
+
+FROM python:2.7-slim
+
+WORKDIR /app
+ADD server.py /app/server.py
+ADD requirements.txt /app/requirements.txt
+
+RUN pip install -r requirements.txt
+
+EXPOSE 8080/tcp
+
+ENTRYPOINT python /app/server.py 8080
