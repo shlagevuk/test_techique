@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: elk
   become: True
   tasks:
     - name: get image for elk
